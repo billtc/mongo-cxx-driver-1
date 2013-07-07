@@ -96,9 +96,9 @@ env['MONGO_BUILD_SASL_CLIENT'] = conf.CheckLibWithHeader(
 conf.Finish()
 
 class InstallSetup:
-    binaries = False
-    libraries = False
-    headers = False
+    binaries = True
+    libraries = True
+    headers = True
 installSetup = InstallSetup()
 
 Export("env has_option use_system_version_of_library installSetup")
