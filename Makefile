@@ -2,7 +2,7 @@ CXX?=		clang++
 AR?=		ar
 RANLIB?=	ranlib
 PREFIX?=	/usr/local
-PYTHON?=	$(PREFIX)/bin/python2
+PYTHON_CMD?=	/usr/local/bin/python2
 INSTALL?=	install
 
 all: clientlib
@@ -29,7 +29,7 @@ clientlib:
 	mkdir ./build/mongo/util/net
 	mkdir ./build/third_party
 	mkdir ./build/third_party/murmurhash3/
-	$(PYTHON) src/mongo/base/generate_error_codes.py src/mongo/base/error_codes.err build/mongo/base/error_codes.h build/mongo/base/error_codes.cpp
+	$(PYTHON_CMD) src/mongo/base/generate_error_codes.py src/mongo/base/error_codes.err build/mongo/base/error_codes.h build/mongo/base/error_codes.cpp
 	$(CXX) -o build/mongo/base/configuration_variable_manager.o -c -DMONGO_EXPOSE_MACROS -Ibuild -Isrc -Ibuild/mongo -Isrc/mongo -I$(PREFIX)/include src/mongo/base/configuration_variable_manager.cpp
 	$(CXX) -o build/mongo/base/error_codes.o -c -DMONGO_EXPOSE_MACROS -Ibuild -Isrc -Ibuild/mongo -Isrc/mongo -I$(PREFIX)/include -I$(PREFIX) build/mongo/base/error_codes.cpp
 	$(CXX) -o build/mongo/base/global_initializer.o -c -DMONGO_EXPOSE_MACROS -Ibuild -Isrc -Ibuild/mongo -Isrc/mongo -I$(PREFIX)/include src/mongo/base/global_initializer.cpp
@@ -78,7 +78,7 @@ clientlib:
 	$(CXX) -o build/mongo/util/file.o -c -DMONGO_EXPOSE_MACROS -Ibuild -Isrc -Ibuild/mongo -Isrc/mongo -I$(PREFIX)/include src/mongo/util/file.cpp
 	$(CXX) -o build/mongo/util/file_allocator.o -c -DMONGO_EXPOSE_MACROS -Ibuild -Isrc -Ibuild/mongo -Isrc/mongo -I$(PREFIX)/include src/mongo/util/file_allocator.cpp
 	$(CXX) -o build/mongo/util/fail_point.o -c -DMONGO_EXPOSE_MACROS -Ibuild -Isrc -Ibuild/mongo -Isrc/mongo -I$(PREFIX)/include src/mongo/util/fail_point.cpp
-	$(PYTHON) src/mongo/db/auth/generate_action_types.py src/mongo/db/auth/action_types.txt build/mongo/db/auth/action_type.h build/mongo/db/auth/action_type.cpp
+	$(PYTHON_CMD) src/mongo/db/auth/generate_action_types.py src/mongo/db/auth/action_types.txt build/mongo/db/auth/action_type.h build/mongo/db/auth/action_type.cpp
 	$(CXX) -o build/mongo/util/fail_point_registry.o -c -DMONGO_EXPOSE_MACROS -Ibuild -Isrc -Ibuild/mongo -Isrc/mongo -I$(PREFIX)/include src/mongo/util/fail_point_registry.cpp
 	$(CXX) -o build/mongo/util/fail_point_service.o -c -DMONGO_EXPOSE_MACROS -Ibuild -Isrc -Ibuild/mongo -Isrc/mongo -I$(PREFIX)/include src/mongo/util/fail_point_service.cpp
 	$(CXX) -o build/mongo/util/histogram.o -c -DMONGO_EXPOSE_MACROS -Ibuild -Isrc -Ibuild/mongo -Isrc/mongo -I$(PREFIX)/include src/mongo/util/histogram.cpp
