@@ -11,4 +11,4 @@ The MongoDB cxx Driver is part of the server distribution, however if you
 don't want the entire server distribution then this file contains just the 
 driver part.
 
-
+Modified to remove SCONS build by Waitman Gobble 7/7/2013 <ns@waitman.net>
