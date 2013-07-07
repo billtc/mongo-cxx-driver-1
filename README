@@ -1,0 +1,6 @@
+
+The MongoDB cxx Driver is part of the server distribution, however if you
+don't want the entire server distribution then this file contains just the 
+driver part.
+
+
